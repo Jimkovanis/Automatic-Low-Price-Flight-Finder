@@ -22,7 +22,7 @@ class FlightSearch:
             "return_date": to_time.strftime("%Y-%m-%d"),
             "type": "1",
             "adults": "1",
-            "currency": "GBP",
+            "currency": "EUR",  # Set natively to Euros
             "api_key": self._api_key,
         }
 
