@@ -1,12 +1,13 @@
 import os
 import requests
-from requests.auth import HTTPBasicAuth
 from dotenv import load_dotenv
+from requests.auth import HTTPBasicAuth
 
 # Load environment variables from .env file
 load_dotenv()
 
 SHEETY_PRICES_ENDPOINT = os.environ["SHEETY_PRICES_ENDPOINT"]
+
 
 class DataManager:
 
@@ -22,12 +23,10 @@ class DataManager:
         self.destination_data = data["prices"]
         return self.destination_data
 
-    # ==================== Updated the price in the spreadsheet ====================
-
     def update_lowest_price(self, row_id, new_price):
         new_data = {
             "price": {
-                "lowestPrice": new_price
+                "lowestPrice": round(float(new_price), 2) if isinstance(new_price, (int, float)) else new_price
             }
         }
         requests.put(
