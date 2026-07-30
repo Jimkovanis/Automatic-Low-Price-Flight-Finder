@@ -1,7 +1,9 @@
 import os
 import smtplib
 
+
 class NotificationManager:
+
     def __init__(self):
         self.smtp_address = "smtp.gmail.com"
         self.email = os.environ["MY_EMAIL"]
